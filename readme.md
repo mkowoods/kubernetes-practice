@@ -7,3 +7,7 @@ https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-w
 https://kubernetes.io/docs/concepts/services-networking/ingress/
 
 set-up ingress service instead of standard load balancer
+
+useful images:
+    - for performing nslookup/ping
+    - kubectl run -it --rm --restart=Never alpine --image=alpine sh
