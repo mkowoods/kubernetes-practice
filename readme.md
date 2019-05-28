@@ -10,4 +10,4 @@ set-up ingress service instead of standard load balancer
 
 useful images:
  - for performing nslookup/ping
-   - `kubectl run -it --rm --restart=Never alpine --image=alpine sh`
+   - `kubectl exec bb-diagnostics --image=radial/busyboxplus:curl -it --rm`
