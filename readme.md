@@ -1,13 +1,5 @@
 ### Praciting Kubernetes deployments
-
-tutorial: https://kubernetes.io/docs/tutorials/stateless-application/guestbook/
-guestbook-php: https://github.com/kubernetes/kubernetes/tree/release-1.10/examples/guestbook
-
-https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
-https://kubernetes.io/docs/concepts/services-networking/ingress/
-
-set-up ingress service instead of standard load balancer
-
-useful images:
- - for performing nslookup/ping
-   - `kubectl exec bb-diagnostics --image=radial/busyboxplus:curl -it --rm`
+Projects:
+ - Elastic Search, both single instance and clusters (of 3 nodes and more)
+ - Sample wordpress app with MySql - Makes use of persistent volumes
+ - Basic Guestbook App
