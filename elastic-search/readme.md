@@ -9,3 +9,6 @@ https://imti.co/kubernetes-production-elasticsearch/
 
 ### How to handle service discovery in Elastic Search:
 https://stackoverflow.com/a/49361064
+
+### Usefu bug fix for setting node parameters  across restarts:
+https://github.com/pires/kubernetes-elasticsearch-cluster/issues/85
