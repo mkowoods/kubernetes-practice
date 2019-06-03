@@ -4,7 +4,7 @@ metadata:
   name: es-cluster
 spec:
   serviceName: elasticsearch
-  podManagementPolicy: "Parallel"
+  # podManagementPolicy: "Parallel"
   replicas: 3
   updateStrategy:
     type: RollingUpdate
@@ -16,18 +16,23 @@ spec:
       labels:
         app: elasticsearch
     spec:
-      initContainers:
-      - name: init-sysctl
-        image: busybox:1.27.2
-        command:
-        - sysctl
-        - -w
-        - vm.max_map_count=262144
-        securityContext:
-          privileged: true
+      # initContainers:
+      # - name: init-sysctl
+      #   image: busybox:1.27.2
+      #   command:
+      #   - sysctl
+      #   - -w
+      #   - vm.max_map_count=262144
+      #   securityContext:
+      #     privileged: true
       containers:
       - name: elastic
         image: docker.elastic.co/elasticsearch/elasticsearch:6.2.2
+        resources:
+          limits:
+            # configured to run on an n1-standard instance on gcp with 1 vCPU and 3.75GB Memory
+            memory: "600Mi"
+            cpu: "100m"
         env:
           - name: cluster.name
             value: es-cluster
@@ -39,8 +44,9 @@ spec:
             value: "es-cluster-0.elasticsearch,es-cluster-1.elasticsearch,es-cluster-2.elasticsearch"
           - name: discovery.zen.minimum_master_nodes
             value: "2"
+          # - name: cluster.initial_master_nodes
+          #   value: es-cluster-0.elasticsearch
           - name: ES_JAVA_OPTS
-            # value: "-Xms512m -Xmx512m"
             value: "-Xms256m -Xmx256m"
         ports:
         - containerPort: 9200
